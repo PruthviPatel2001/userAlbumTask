@@ -18,8 +18,14 @@ const PhotoGallery = () => {
 
   useEffect(() => {
     const getAlbumPhotos = async (id) => {
-      const response = await fetchPhotos(id);
-      setAlbumPhotosData(response);
+
+      try {
+        const response = await fetchPhotos(id);
+        setAlbumPhotosData(response);
+      } catch (error) {
+        console.log(error);
+      }
+
     };
 
     id && getAlbumPhotos(id);

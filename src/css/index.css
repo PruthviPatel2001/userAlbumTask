@@ -28,3 +28,12 @@ code {
   overflow: hidden;
   white-space: nowrap;
 }
+
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  .page-title h2{
+    font-size:1rem;
+  }
+}

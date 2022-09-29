@@ -10,9 +10,12 @@ const UserList = () => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await fetchUser();
-
-      setUserData(response);
+      try {
+        const response = await fetchUser();
+        setUserData(response);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getUserData();
@@ -26,7 +29,7 @@ const UserList = () => {
         </div>
 
         {UserData.length > 0 ? (
-          <Grid container spacing={2} >
+          <Grid container spacing={2}>
             {UserData.map((val, index) => {
               return (
                 <Grid key={index} item md={3} lg={3} sm={12} xs={12}>

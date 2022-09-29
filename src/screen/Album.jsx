@@ -11,12 +11,16 @@ const Album = (props) => {
   const { id } = useParams();
   const [AlbumData, setAlbumData] = useState([]);
   const location = useLocation();
-  let userName= location.state.name
+  let userName = location.state.name;
 
   useEffect(() => {
     const getUserAlbum = async (id) => {
-      const response = await fetchAlbums(id);
-      setAlbumData(response);
+      try {
+        const response = await fetchAlbums(id);
+        setAlbumData(response);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     id && getUserAlbum(id);
@@ -29,7 +33,7 @@ const Album = (props) => {
         <Grid container spacing={2} className="mt-4">
           {AlbumData.map((val, index) => {
             return (
-              <Grid key={index} item md={3} lg={3} sm={12} xs={12}>
+              <Grid key={index} item md={3} lg={3} sm={6} xs={12}>
                 <AlbumCard data={val} />
               </Grid>
             );
